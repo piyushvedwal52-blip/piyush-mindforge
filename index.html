@@ -171,9 +171,12 @@
   @media(min-width:900px){.biz-grid{grid-template-columns:1.1fr 1fr;}}
   .topic-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px;}
   .topic-chip{
-    font-size:13.5px;padding:10px 12px;background:rgba(255,255,255,0.03);
+    display:block;font-size:13.5px;padding:10px 12px;background:rgba(255,255,255,0.03);
     border:1px solid var(--line);border-radius:8px;color:var(--text);
+    cursor:pointer;transition:border-color .2s ease, background .2s ease, transform .15s ease;
   }
+  .topic-chip:hover{border-color:var(--gold);background:rgba(217,178,76,0.08);transform:translateY(-2px);}
+  .topic-chip::after{content:' →';color:var(--gold-2);font-weight:700;}
   .pdf-lib{text-align:center;}
   .pdf-icon{
     width:64px;height:64px;margin:0 auto 16px;border-radius:12px;
@@ -365,12 +368,12 @@
     <div class="biz-grid">
       <div>
         <div class="topic-grid">
-          <div class="topic-chip">Company Analysis</div>
-          <div class="topic-chip">Startup Ideas</div>
-          <div class="topic-chip">Business Models</div>
-          <div class="topic-chip">Market Trends</div>
-          <div class="topic-chip">Founder Stories</div>
-          <div class="topic-chip">Economic Insights</div>
+          <a class="topic-chip" href="pdfs/company-analysis.pdf" target="_blank">Company Analysis</a>
+          <a class="topic-chip" href="pdfs/startup-ideas.pdf" target="_blank">Startup Ideas</a>
+          <a class="topic-chip" href="pdfs/business-models.pdf" target="_blank">Business Models</a>
+          <a class="topic-chip" href="pdfs/market-trends.pdf" target="_blank">Market Trends</a>
+          <a class="topic-chip" href="pdfs/founder-stories.pdf" target="_blank">Founder Stories</a>
+          <a class="topic-chip" href="pdfs/economic-insights.pdf" target="_blank">Economic Insights</a>
         </div>
       </div>
       <div class="glass-card pdf-lib">
