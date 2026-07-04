@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindForge by Piyush — Think Better. Learn Deeper. Grow Faster.</title>
+<meta name="description" content="MindForge by Piyush — Podcast, Financial Planning, Business Talk aur ek book jo aapki soch badal degi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --black:#04060d;
+    --navy:#0a1226;
+    --navy-2:#0e1a35;
+    --navy-glass:rgba(16,26,52,0.55);
+    --line:rgba(212,175,55,0.18);
+    --line-blue:rgba(58,140,255,0.25);
+    --gold:#d9b24c;
+    --gold-2:#f0cf7a;
+    --blue:#3a8cff;
+    --blue-soft:#6fb0ff;
+    --text:#e9edf6;
+    --muted:#8b96b3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -5%, rgba(58,140,255,0.10), transparent),
+      radial-gradient(ellipse 700px 500px at 100% 10%, rgba(217,178,76,0.08), transparent),
+      var(--black);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  .display{font-family:'Sora',sans-serif;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+  .grad-gold{background:linear-gradient(90deg,var(--gold-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .grad-blue{background:linear-gradient(90deg,var(--blue-soft),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:60;
+    background:rgba(4,6,13,0.75);backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
+  .brand{display:flex;align-items:center;gap:12px;font-family:'Sora',sans-serif;font-weight:700;font-size:18px;}
+  .crown{width:34px;height:34px;flex-shrink:0;}
+  .brand .by{color:var(--muted);font-weight:400;font-size:14px;margin-left:2px;}
+  nav{display:none;gap:28px;font-size:14px;font-weight:600;color:var(--muted);}
+  @media(min-width:860px){nav{display:flex;}}
+  nav a:hover{color:var(--gold-2);}
+  .header-cta{
+    background:linear-gradient(90deg,var(--gold),var(--gold-2));color:#221704;
+    padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:100px 0 80px;text-align:center;position:relative;}
+  .hero .crown-lg{width:56px;height:56px;margin:0 auto 26px;display:block;}
+  .hero h1{font-size:clamp(38px,7vw,64px);font-weight:800;letter-spacing:-0.5px;}
+  .hero .tagline{
+    margin-top:18px;font-size:clamp(16px,2.2vw,20px);color:var(--blue-soft);
+    font-weight:600;letter-spacing:0.3px;
+  }
+  .divider-star{margin:30px auto 0;width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);position:relative;}
+  .divider-star::after{content:'✦';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--gold);font-size:14px;background:var(--black);padding:0 8px;}
+
+  /* ---------- SECTION SHELL ---------- */
+  .section{padding:70px 0;position:relative;}
+  .panel{
+    background:var(--navy-glass);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:36px;
+    backdrop-filter:blur(6px);
+  }
+  .sec-icon{
+    width:48px;height:48px;border-radius:50%;
+    border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;margin-bottom:16px;color:var(--gold-2);
+    background:rgba(217,178,76,0.06);
+  }
+  .sec-index{font-family:'Sora',sans-serif;color:var(--gold-2);font-weight:700;font-size:13px;letter-spacing:1.5px;margin-bottom:4px;}
+  .sec-title{font-family:'Sora',sans-serif;font-size:clamp(24px,3.4vw,32px);font-weight:800;margin-bottom:6px;}
+  .sec-subtitle{color:var(--blue-soft);font-weight:600;font-size:15px;margin-bottom:18px;}
+  .sec-desc{color:var(--muted);font-size:15px;max-width:640px;margin-bottom:6px;}
+
+  /* ---------- PODCAST ---------- */
+  .podcast-grid{display:grid;grid-template-columns:1fr;gap:26px;margin-top:24px;}
+  @media(min-width:900px){.podcast-grid{grid-template-columns:1fr 1.1fr;}}
+  .feature-list{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:10px;}
+  .feature-list li{
+    display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text);
+    padding:10px 14px;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid var(--line);
+  }
+  .feature-list li::before{content:'♪';color:var(--gold-2);font-weight:700;}
+
+  .glass-card{
+    background:rgba(10,18,38,0.7);border:1px solid var(--line-blue);border-radius:14px;padding:28px;
+  }
+  .glass-card h4{font-family:'Sora',sans-serif;color:var(--gold-2);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;text-align:center;}
+  .field{margin-bottom:14px;}
+  .field label{display:block;font-size:12px;font-weight:600;color:var(--muted);margin-bottom:6px;}
+  .field input, .field textarea{
+    width:100%;padding:11px 13px;border-radius:8px;border:1px solid rgba(255,255,255,0.12);
+    background:rgba(255,255,255,0.04);color:var(--text);font-family:'Inter',sans-serif;font-size:14px;
+  }
+  .field textarea{resize:vertical;min-height:70px;}
+  .field input:focus, .field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(58,140,255,0.15);}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:13px 24px;border-radius:9px;font-weight:700;font-size:14px;border:none;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-gold{background:linear-gradient(90deg,var(--gold),var(--gold-2));color:#221704;}
+  .btn-blue{background:linear-gradient(90deg,var(--blue),var(--blue-soft));color:#04122b;}
+  .btn-outline{background:transparent;border:1.5px solid var(--gold);color:var(--gold-2);}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px -8px rgba(217,178,76,0.4);}
+  .btn-wide{width:100%;}
+  .after-note{margin-top:16px;font-size:13px;color:var(--muted);display:flex;flex-direction:column;gap:8px;}
+  .after-note span{display:flex;align-items:center;gap:8px;color:var(--text);}
+  .dot-gold{color:var(--gold-2);}
+
+  /* ---------- FINANCIAL ---------- */
+  .fin-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px;}
+  @media(min-width:800px){.fin-grid{grid-template-columns:repeat(4,1fr);}}
+  .fin-card{
+    background:rgba(255,255,255,0.03);border:1px solid var(--line-blue);border-radius:12px;padding:20px;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .fin-card:hover{transform:translateY(-4px);border-color:var(--blue);}
+  .fin-card .ic{width:38px;height:38px;border-radius:50%;background:rgba(58,140,255,0.12);display:flex;align-items:center;justify-content:center;color:var(--blue-soft);margin-bottom:12px;font-size:16px;}
+  .fin-card h4{font-family:'Sora',sans-serif;font-size:14px;letter-spacing:0.5px;color:var(--gold-2);margin-bottom:10px;text-transform:uppercase;}
+  .fin-card ul{list-style:none;font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:6px;}
+  .fin-card ul li::before{content:'— ';color:var(--blue-soft);}
+  .fin-note{margin-top:22px;text-align:center;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;}
+
+  /* ---------- BOOK ---------- */
+  .book-grid{display:grid;grid-template-columns:1fr;gap:30px;margin-top:24px;align-items:center;}
+  @media(min-width:860px){.book-grid{grid-template-columns:0.7fr 1fr;}}
+  .book-cover{
+    aspect-ratio:3/4.4;border-radius:10px;
+    background:linear-gradient(160deg,#0c1730,#152449 55%,#0a1226);
+    border:1px solid var(--line-blue);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:24px;position:relative;overflow:hidden;
+  }
+  .book-cover::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 30%,rgba(58,140,255,0.18),transparent 60%);
+  }
+  .book-cover .bt{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;letter-spacing:1px;color:var(--text);position:relative;z-index:2;}
+  .book-cover .bs{margin-top:6px;font-size:11px;color:var(--gold-2);letter-spacing:2px;text-transform:uppercase;position:relative;z-index:2;}
+  .book-cover .stamp{margin-top:auto;font-size:10px;color:var(--muted);letter-spacing:1px;position:relative;z-index:2;}
+  .book-copy ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin:18px 0 24px;}
+  .book-copy li{font-size:13.5px;color:var(--text);padding:8px 10px;background:rgba(255,255,255,0.03);border-radius:6px;border:1px solid var(--line);}
+  .book-copy li::before{content:'✦ ';color:var(--gold-2);}
+  .coming-soon-tag{
+    display:inline-block;font-size:12px;font-weight:700;letter-spacing:1px;color:#221704;
+    background:linear-gradient(90deg,var(--gold),var(--gold-2));padding:6px 14px;border-radius:20px;margin-bottom:14px;
+  }
+
+  /* ---------- BUSINESS TALK ---------- */
+  .biz-grid{display:grid;grid-template-columns:1fr;gap:26px;margin-top:24px;}
+  @media(min-width:900px){.biz-grid{grid-template-columns:1.1fr 1fr;}}
+  .topic-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:16px;}
+  .topic-chip{
+    font-size:13.5px;padding:10px 12px;background:rgba(255,255,255,0.03);
+    border:1px solid var(--line);border-radius:8px;color:var(--text);
+  }
+  .pdf-lib{text-align:center;}
+  .pdf-icon{
+    width:64px;height:64px;margin:0 auto 16px;border-radius:12px;
+    background:rgba(217,178,76,0.1);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--gold-2);font-weight:800;
+  }
+  .pdf-empty{font-size:13.5px;color:var(--muted);margin:14px 0 20px;}
+  .pdf-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+
+  /* ---------- FEEDBACK ---------- */
+  .feedback-panel{display:grid;grid-template-columns:1fr;gap:20px;margin-top:24px;}
+  @media(min-width:800px){.feedback-panel{grid-template-columns:1fr 1fr auto;align-items:end;}}
+  .wa-badge{
+    grid-column:1/-1;text-align:center;margin-top:8px;font-size:13px;color:var(--muted);
+    display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:56px 0 30px;margin-top:20px;}
+  .foot-grid{display:grid;gap:32px;grid-template-columns:1.2fr 1fr 1fr;}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr;}}
+  .foot-brand{display:flex;align-items:center;gap:10px;font-family:'Sora',sans-serif;font-weight:700;font-size:17px;margin-bottom:10px;}
+  footer p, footer a{font-size:14px;color:var(--muted);}
+  .foot-col h4{font-family:'Sora',sans-serif;font-size:13px;letter-spacing:1px;color:var(--gold-2);text-transform:uppercase;margin-bottom:12px;}
+  .foot-col a{display:block;margin-bottom:9px;transition:color .2s;}
+  .foot-col a:hover{color:var(--blue-soft);}
+  .foot-bottom{
+    border-top:1px solid var(--line);margin-top:40px;padding-top:20px;text-align:center;
+    font-size:12px;color:var(--gold-2);letter-spacing:0.5px;
+  }
+
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:none;}
+
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <svg class="crown" viewBox="0 0 48 48" fill="none">
+        <path d="M6 34L4 16L14 22L24 10L34 22L44 16L42 34H6Z" stroke="#d9b24c" stroke-width="2" stroke-linejoin="round"/>
+        <circle cx="4" cy="14" r="2.4" fill="#d9b24c"/>
+        <circle cx="24" cy="8" r="2.4" fill="#d9b24c"/>
+        <circle cx="44" cy="14" r="2.4" fill="#d9b24c"/>
+        <line x1="6" y1="38" x2="42" y2="38" stroke="#d9b24c" stroke-width="2"/>
+      </svg>
+      MindForge<span class="by">&nbsp;by Piyush</span>
+    </div>
+    <nav>
+      <a href="#podcast">Podcast</a>
+      <a href="#financial">Financial Planning</a>
+      <a href="#book">My Book</a>
+      <a href="#business">Business Talk</a>
+      <a href="#feedback">Feedback</a>
+    </nav>
+    <a href="#podcast" class="header-cta">Book Podcast</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <svg class="crown-lg" viewBox="0 0 48 48" fill="none">
+      <path d="M6 34L4 16L14 22L24 10L34 22L44 16L42 34H6Z" stroke="#d9b24c" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="4" cy="14" r="2.6" fill="#d9b24c"/>
+      <circle cx="24" cy="8" r="2.6" fill="#d9b24c"/>
+      <circle cx="44" cy="14" r="2.6" fill="#d9b24c"/>
+      <line x1="6" y1="38" x2="42" y2="38" stroke="#d9b24c" stroke-width="2"/>
+    </svg>
+    <h1><span class="grad-gold">MindForge</span> <span style="color:var(--text)">by Piyush</span></h1>
+    <div class="tagline">Think Better. Learn Deeper. Grow Faster.</div>
+    <div class="divider-star"></div>
+  </div>
+</section>
+
+<!-- ============ 1. PODCAST ============ -->
+<section class="section" id="podcast">
+  <div class="wrap panel reveal">
+    <div class="sec-index">01 — PODCAST</div>
+    <div class="sec-title">Mind Upgrade Podcast</div>
+    <p class="sec-desc">Learn something new every day through conversations about business, psychology, finance, science, companies, politicians, and personal growth.</p>
+
+    <div class="podcast-grid">
+      <div>
+        <ul class="feature-list">
+          <li>Podcast Episodes</li>
+          <li>Upcoming Episodes</li>
+          <li>Guest Discussions</li>
+        </ul>
+      </div>
+
+      <div class="glass-card">
+        <h4>Podcast Appointment Form</h4>
+        <form id="podcastForm">
+          <div class="field"><label>Full Name</label><input type="text" id="p-name" required></div>
+          <div class="field"><label>WhatsApp Number</label><input type="tel" id="p-wa" required></div>
+          <div class="field"><label>Email</label><input type="email" id="p-email" required></div>
+          <div class="field"><label>Topic</label><input type="text" id="p-topic" required></div>
+          <div class="field"><label>Why do you want to join this podcast?</label><textarea id="p-why" required></textarea></div>
+          <div class="field"><label>What value can you provide to listeners?</label><textarea id="p-value" required></textarea></div>
+          <button type="submit" class="btn btn-gold btn-wide">Book Podcast Appointment</button>
+        </form>
+        <div class="after-note">
+          <span class="dot-gold">↳</span>
+          <span>Submit karte hi WhatsApp (8279275226) khulega — details taiyar milengi.</span>
+          <span>Email bhi ready milega bhejne ke liye: piyushvedwal52@gmail.com</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. FINANCIAL PLANNING ============ -->
+<section class="section" id="financial">
+  <div class="wrap panel reveal">
+    <div class="sec-index">02 — FINANCIAL PLANNING</div>
+    <div class="sec-title">Financial Planning Hub</div>
+
+    <div class="fin-grid">
+      <div class="fin-card">
+        <div class="ic">↗</div>
+        <h4>Investment</h4>
+        <ul><li>SIP</li><li>Mutual Funds</li><li>Stock Market</li><li>ETFs</li></ul>
+      </div>
+      <div class="fin-card">
+        <div class="ic">🛡</div>
+        <h4>Insurance</h4>
+        <ul><li>LIC</li><li>Term Insurance</li><li>Health Insurance</li></ul>
+      </div>
+      <div class="fin-card">
+        <div class="ic">✦</div>
+        <h4>Savings</h4>
+        <ul><li>PPF</li><li>Emergency Fund</li><li>Financial Goals</li></ul>
+      </div>
+      <div class="fin-card">
+        <div class="ic">◎</div>
+        <h4>Emerging Assets</h4>
+        <ul><li>Crypto Basics</li></ul>
+      </div>
+    </div>
+    <div class="fin-note">Ye sara content admin panel ya markdown files se edit ho sakta hai.</div>
+  </div>
+</section>
+
+<!-- ============ 3. MY BOOK ============ -->
+<section class="section" id="book">
+  <div class="wrap panel reveal">
+    <div class="sec-index">03 — MY BOOK</div>
+    <div class="sec-title">The Thinking Advantage</div>
+
+    <div class="book-grid">
+      <div class="book-cover">
+        <div class="bt">THE<br>THINKING<br>ADVANTAGE</div>
+        <div class="bs">MindForge by Piyush</div>
+        <div class="stamp">Coming Soon</div>
+      </div>
+      <div class="book-copy">
+        <div class="coming-soon-tag">Likha Ja Raha Hai</div>
+        <p class="sec-desc">A practical guide to:</p>
+        <ul>
+          <li>Deep Thinking</li>
+          <li>Focus</li>
+          <li>Psychology</li>
+          <li>Human Behaviour</li>
+          <li>Relationships</li>
+          <li>Observation Skills</li>
+          <li>Decision Making</li>
+          <li>Understanding People</li>
+          <li>Personal Growth</li>
+        </ul>
+        <a href="book.html" class="btn btn-outline">Read Book</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. BUSINESS TALK ============ -->
+<section class="section" id="business">
+  <div class="wrap panel reveal">
+    <div class="sec-index">04 — BUSINESS TALK</div>
+    <div class="sec-title">Business Talk</div>
+    <p class="sec-desc">Deep business research and analysis.</p>
+
+    <div class="biz-grid">
+      <div>
+        <div class="topic-grid">
+          <div class="topic-chip">Company Analysis</div>
+          <div class="topic-chip">Startup Ideas</div>
+          <div class="topic-chip">Business Models</div>
+          <div class="topic-chip">Market Trends</div>
+          <div class="topic-chip">Founder Stories</div>
+          <div class="topic-chip">Economic Insights</div>
+        </div>
+      </div>
+      <div class="glass-card pdf-lib">
+        <h4>PDF Library</h4>
+        <div class="pdf-icon">PDF</div>
+        <div class="pdf-empty">Naye PDFs yahan add honge — admin kabhi bhi upload kar sakta hai.</div>
+        <div class="pdf-actions">
+          <button class="btn btn-outline" disabled>Read PDF</button>
+          <button class="btn btn-outline" disabled>Download PDF</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. FEEDBACK ============ -->
+<section class="section" id="feedback">
+  <div class="wrap panel reveal">
+    <div class="sec-index">05 — FEEDBACK</div>
+    <div class="sec-title">Feedback &amp; Suggestions</div>
+
+    <form id="feedbackForm" class="feedback-panel">
+      <div class="field" style="margin-bottom:0;"><label>Your Name</label><input type="text" id="f-name" required></div>
+      <div class="field" style="margin-bottom:0;"><label>Your Feedback Message</label><input type="text" id="f-msg" required></div>
+      <div style="display:flex;gap:10px;">
+        <button type="submit" class="btn btn-blue">Submit Feedback</button>
+        <a href="https://wa.me/918279275226" target="_blank" class="btn btn-outline">Contact on WhatsApp</a>
+      </div>
+      <div class="wa-badge">WhatsApp Number: <strong style="color:var(--gold-2);">8279275226</strong></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg width="26" height="26" viewBox="0 0 48 48" fill="none">
+            <path d="M6 34L4 16L14 22L24 10L34 22L44 16L42 34H6Z" stroke="#d9b24c" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          MindForge by Piyush
+        </div>
+        <p>piyushvedwal52@gmail.com</p>
+        <p>8279275226</p>
+      </div>
+      <div class="foot-col">
+        <h4>Quick Links</h4>
+        <a href="#podcast">Podcast</a>
+        <a href="#financial">Financial Planning</a>
+        <a href="book.html">My Book</a>
+        <a href="#business">Business Talk</a>
+        <a href="#feedback">Feedback</a>
+      </div>
+      <div class="foot-col">
+        <h4>Sampark</h4>
+        <a href="mailto:piyushvedwal52@gmail.com">Email Karein</a>
+        <a href="https://wa.me/918279275226" target="_blank">WhatsApp Karein</a>
+        <a href="tel:+918279275226">Call Karein</a>
+      </div>
+    </div>
+    <div class="foot-bottom">✦ MIND FORGE THE FUTURE. KNOWLEDGE FOR LIFE. ✦</div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  },{threshold:0.12});
+  revealEls.forEach(el=>obs.observe(el));
+
+  document.getElementById('podcastForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('p-name').value.trim();
+    const wa = document.getElementById('p-wa').value.trim();
+    const email = document.getElementById('p-email').value.trim();
+    const topic = document.getElementById('p-topic').value.trim();
+    const why = document.getElementById('p-why').value.trim();
+    const value = document.getElementById('p-value').value.trim();
+    const msg = `Podcast Appointment Request\n\nName: ${name}\nWhatsApp: ${wa}\nEmail: ${email}\nTopic: ${topic}\n\nWhy join: ${why}\n\nValue to listeners: ${value}`;
+    window.open(`https://wa.me/918279275226?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+
+  document.getElementById('feedbackForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('f-name').value.trim();
+    const message = document.getElementById('f-msg').value.trim();
+    const msg = `Feedback from ${name}:\n\n${message}`;
+    window.open(`https://wa.me/918279275226?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+</script>
+
+</body>
+</html>
